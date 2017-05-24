@@ -1,0 +1,15 @@
+.tbl_class{
+    border-collapse: collapse;
+    border: 3px solid blue;
+}
+.tbl_header{
+    text-align: left;
+    background: none repeat scroll 0 0 red;
+    border-bottom: 3px solid green;
+    padding: 2px;
+}
+.even_row{
+    text-align: center;
+    background: none repeat scroll 0 0 blue;
+}
+

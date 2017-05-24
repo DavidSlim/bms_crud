@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 14, 2016 9:43:21 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="userReg.UserRegGS" table="user_reg" catalog="kra_bms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="sirName" type="string">
+            <column name="SirName" length="65535" not-null="true" />
+        </property>
+        <property name="otherName" type="string">
+            <column name="OtherName" length="65535" not-null="true" />
+        </property>
+        <property name="idNo" type="string">
+            <column name="IdNo" length="65535" not-null="true" />
+        </property>
+        <property name="pinNo" type="string">
+            <column name="PinNo" length="65535" not-null="true" />
+        </property>
+        <property name="hierachy" type="string">
+            <column name="Hierachy" length="65535" not-null="true" />
+        </property>
+        <property name="phoneNo" type="string">
+            <column name="PhoneNo" length="65535" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="65535" not-null="true" />
+        </property>
+        <property name="loginName" type="string">
+            <column name="LoginName" length="65535" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="65535" />
+        </property>
+        <property name="yrId" type="string">
+            <column name="YrId" length="65535" />
+        </property>
+        <property name="regDate" type="string">
+            <column name="RegDate" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

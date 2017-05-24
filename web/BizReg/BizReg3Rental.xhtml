@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:h="http://xmlns.jcp.org/jsf/html"   
+                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                 xmlns:ui="http://java.sun.com/jsf/facelets"   
+                 xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"            
+                 template="/template/web_view/layout.xhtml">
+
+    <ui:define name="messages_top">
+        <h3>Business Registration - Rental Information</h3>
+        <div id="line-seperator-inside"></div>
+        <br/>
+        <h0><h:outputText id="user_lbl" value="#{bizRegBean.message()}"/></h0>
+        <br/>       
+    </ui:define>
+
+    <ui:define name="center">
+
+        <div id="center">
+            <div id="center_top_nav">
+
+                <h:form>            
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 70%; margin-right: 1%;"><h:outputText styleClass="output_fields_small" value="Rental Type"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:outputText id="lbl_rentnature" style="color: indigo; font-size: 14px; font-weight: 600; white-space: nowrap;" value="#{bizRegBean.bizreg_gs.rentalLlordTenant}"/></div>
+                    </div>
+                    <h:selectOneRadio styleClass="radio_buttons" value="#{bizRegBean.bizreg_gs.rentalLlordTenant}" disabled="#{trueFalse.disabledTF}" required="true" requiredMessage="Provide Rental Type">
+                        <f:selectItem itemLabel="Tenant" itemValue="Tenant" />  
+                        <f:selectItem itemLabel="Landlord" itemValue="Landlord" />
+                        <f:selectItem itemLabel="Owner" itemValue="Owner" />  
+                        <f:ajax listener="#{bizRegBean.enable_lltt()}" render="lbl_llord_name lbl_llord_tel_no lbl_llord_units_no lbl_rent_unit lbl_rent_paid lbl_rentnature"/>
+                    </h:selectOneRadio>
+
+                    <div id="line-seperator-inside"></div>
+
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 70%; margin-right: 1%;"><h:outputText styleClass="output_fields_small" value="Rent Paid / YR"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:inputText id="lbl_rent_paid" styleClass="input_fields_small" value="#{bizRegBean.bizreg_gs.rentalRentPaid}" disabled="#{trueFalse.disabledTF}" readonly="#{bizRegBean.bizreg_gs.boolTt}" required="true" requiredMessage="Provide Rent Paid Per Year"/></div>
+                    </div>
+
+                    <div id="line-seperator-inside"></div>
+
+                    <h:outputText style="color: indigo; font-size: 14px; font-weight: 600;" value="IF LANDLORD PROVIDE"/>
+
+                    <div id="line-seperator-transparent"></div>
+
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 70%; margin-right: 1%;"><h:outputText styleClass="output_fields_small" value="Rental Nature"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:outputText id="lbl_renttype" style="color: indigo; font-size: 14px; font-weight: 600; white-space: nowrap;" value="#{bizRegBean.bizreg_gs.rentalUnitType}"/></div>
+                    </div>
+
+                    <h:selectOneRadio styleClass="radio_buttons" value="#{bizRegBean.bizreg_gs.rentalUnitType}" disabled="#{trueFalse.disabledTF}" required="true" requiredMessage="Provide Rental Nature">
+                        <f:selectItem itemLabel="Commercial" itemValue="Commercial" />
+                        <f:selectItem itemLabel="Residential" itemValue="Residential" />  
+                        <f:ajax render="lbl_renttype"/>
+                    </h:selectOneRadio>
+
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 70%; margin-right: 1%;"><h:inputText id="lbl_llord_name" styleClass="input_fields_small" value="#{bizRegBean.bizreg_gs.rentalLlordName}" disabled="#{trueFalse.disabledTF}" readonly="#{bizRegBean.bizreg_gs.boolTt}" pt:placeholder="Landlord Name" required="true" requiredMessage="Provide Landlord Name"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:inputText id="lbl_llord_tel_no" styleClass="input_fields_small" value="#{bizRegBean.bizreg_gs.rentalLlordNo}" disabled="#{trueFalse.disabledTF}" readonly="#{bizRegBean.bizreg_gs.boolTt}" pt:placeholder="Landlord Tel No" required="true" requiredMessage="Provide Landlord Tel No"/></div> 
+                    </div>
+
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 60%; margin-right: 1%;"><h:outputText styleClass="output_fields_small" value="Units No"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:inputText id="lbl_llord_units_no" styleClass="input_fields_small" value="#{bizRegBean.bizreg_gs.rentalUnitsNo}" disabled="#{trueFalse.disabledTF}" readonly="#{biz_reg_gs.boolLl}" required="true" requiredMessage="Provide Units"/></div>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="width: 60%; margin-right: 1%;"><h:outputText styleClass="output_fields_small" value="Rent Per Unit - /YR"/></div>
+                        <div style="width: 100%; margin-left: 1%;"><h:inputText id="lbl_rent_unit" styleClass="input_fields_small" value="#{bizRegBean.bizreg_gs.rentalUnitsRent}" disabled="#{trueFalse.disabledTF}" readonly="#{biz_reg_gs.boolLl}" required="true" requiredMessage="Provide Rent Per Unit Per Year"/></div> 
+                    </div>
+
+                    <div id="buttons_div">
+                        <h:commandButton styleClass="bt_pimp" value="Prev" action="#{nav_.bizReg2Turnover()}"/>
+                        <h:commandButton styleClass="bt_pimp" value="Next" action="#{nav_.bizReg4Paye()}"/>
+                    </div>
+
+
+                </h:form>
+
+            </div>
+        </div>
+        <div id="messages_temp_bottom"><h:messages styleClass="error_warning"/><br/> </div>
+
+    </ui:define>
+
+</ui:composition>

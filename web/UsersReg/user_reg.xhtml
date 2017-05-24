@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition   xmlns="http://www.w3.org/1999/xhtml" 
+                  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                  xmlns:f="http://xmlns.jcp.org/jsf/core"   
+                  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"           
+                  template="/template/web_view/layout.xhtml">
+
+    <ui:define name="messages_top">
+        <h3>Users Registration Form</h3>
+        <div id="line-seperator-inside"></div>
+        <br/>
+        <h0>#{userRegBean.message()}</h0>
+        <br/>        
+    </ui:define>
+
+    <ui:define name="center" >
+
+        <div id="center" >   
+            <div id="center_top">
+                <h:form>
+                    <div id="center_top_horizontal">
+                        <div style="margin-left: 10px; margin-right: 10px;">
+                            <h:outputText value="Sir Name"/>
+                            <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.sirName}" required="true" requiredMessage="Provide sir Name To Register"/>
+                            <h:outputText value="Other Names"/>
+                            <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.otherName}" required="true" requiredMessage="Provide Other Name To Register"/>
+                            <h:outputText value="ID No"/>
+                            <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.idNo}" autocomplete="off" required="true" requiredMessage="Provide ID No To Register"/>
+                        </div>
+                        <div style="margin-left: 10px; margin-right: 10px;">
+                            <h:outputText value="PIN No"/>
+                            <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.pinNo}" autocomplete="off" required="true" requiredMessage="Provide PIN No To Register"/>
+                            <h:outputText value="Hierachy #{userRegBean.userReg_gs.hierachy}" />
+                            <h:selectOneMenu styleClass="input_fields" value="#{userRegBean.userReg_gs.hierachy}" required="true" requiredMessage="Provide Hierachy To Register" >
+                                <f:selectItems value="#{listsAndMaps.hierachy_listmeth()}" />
+                            </h:selectOneMenu>
+                            <h:outputText value="Phone No"/>
+                            <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.phoneNo}" autocomplete="off" required="true" requiredMessage="Provide Phone No To Proceed"/>
+                        </div>
+                    </div>
+                    <div style="margin-left: 10px; margin-right: 10px;">
+                        <h:inputText styleClass="input_fields" value="#{userRegBean.userReg_gs.email}" autocomplete="off" pt:placeholder="Email Add" required="true" requiredMessage="Provide Email To Proceed"/>
+                    </div>
+                    <div id="line-seperator-inside"></div>
+                    <div id="buttons_div">
+                        <h:commandButton styleClass="bt_pimp" value="Save" action="#{userRegBean.data_save()}">
+                        </h:commandButton>
+                        <h:commandButton styleClass="bt_pimp" value="Edit" action="#{userRegBean.data_update()}">
+                        </h:commandButton>
+                    </div>
+                    <div id="line-seperator-inside"></div>
+                </h:form>
+            </div>
+
+            <div id="center_bottom">
+                <div id="scroll_it">
+                    <h:form>  
+                        <h:dataTable value="#{userRegBean.data_pop()}" id="my_table" var="pop" headerClass="my_table_header" rowClasses="my_table_rows_odd, my_table_rows_even" >
+                            <h:column><f:facet name="header"><load>Load</load></f:facet>
+                                <div style="font-stretch: expanded;"><h:commandLink value="Load" action="#{userRegBean.IntoFields(pop.id)}"/></div>               
+                            </h:column>
+                            <h:column><f:facet name="header"><del>Delete</del></f:facet>
+                                <div style="font-stretch: expanded;"><h:commandLink value="Delete" action="#{userRegBean.data_del(pop.id)}"/></div>       
+                            </h:column>
+                            <h:column><f:facet name="header">Sir Name</f:facet>#{pop.sirName}</h:column>
+                            <h:column><f:facet name="header">Other Name</f:facet>#{pop.otherName}</h:column>
+                            <h:column><f:facet name="header">Id No</f:facet>#{pop.idNo}</h:column>
+                            <h:column><f:facet name="header">PIN No</f:facet>#{pop.pinNo}</h:column>
+                            <h:column><f:facet name="header">Hierachy</f:facet>#{pop.hierachy}</h:column>
+                            <h:column><f:facet name="header">Phone No</f:facet>#{pop.phoneNo}</h:column>
+                            <h:column><f:facet name="header">Email</f:facet>#{pop.email}</h:column>
+                            <h:column><f:facet name="header">Login Name</f:facet>#{pop.loginName}</h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <div id="messages_temp_bottom">
+            <h:messages styleClass="error_warning"/>
+        </div>
+    </ui:define>
+    <ui:define name="footer">
+        <h:form>
+            <msg>#{userRegBean.holder.msg}</msg>
+        </h:form>
+    </ui:define>
+</ui:composition>

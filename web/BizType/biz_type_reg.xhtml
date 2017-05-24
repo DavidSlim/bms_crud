@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition     xmlns="http://www.w3.org/1999/xhtml"
+                    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    template="/template/web_view/layout.xhtml"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html"
+                    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="messages_top">
+        <h3>Business Type Registration Form</h3>
+        <div id="line-seperator-inside"></div>
+        <br/>
+        <h0><h:outputText id="biz_lbl" value="#{bizTypeLogic.message()}"/></h0>
+    </ui:define>
+
+    <ui:define name="center">
+        <div id="center"> 
+            <h:form>
+                <div id="center_top" style="flex-direction: row">
+                    <h:outputText value="Biz Type"/>
+                    <h:inputText styleClass="input_fields" value="#{bizTypeLogic.biztype_gs.biz_type}" required="true" requiredMessage="Provide BizType To Proceed">
+                        <f:ajax event="keyup" render="biz_lbl"/>
+                    </h:inputText>                        
+                    <div id="buttons_div">
+                        <h:commandButton styleClass="bt_pimp" value="Save" action="#{bizTypeLogic.data_save()}">
+                        </h:commandButton>
+                        <h:commandButton styleClass="bt_pimp" value="Edit" action="#{bizTypeLogic.data_update()}">
+                        </h:commandButton>
+                    </div>
+                </div>  
+            </h:form>
+        </div>
+        <div id="center_bottom" >
+            <div id="scroll_it">
+                <h:form>
+                    <h:dataTable value="#{bizTypeLogic.pop_data()}" var="pop" styleClass="my_table" headerClass="my_table_header" columnClasses="my_table_columns" rowClasses="my_table_rows_odd, my_table_rows_even" >
+                        <h:column><f:facet name="header">Biz Type Name</f:facet>#{pop.biz_type}</h:column>
+                        <h:column><f:facet name="header">Delete Data</f:facet>
+                            <h:commandLink value="Delete" action="#{bizTypeLogic.data_del(pop.id)}"/>         
+                        </h:column>
+                        <h:column><f:facet name="header">Load Data</f:facet>
+                            <h:commandLink value="Load" action="#{bizTypeLogic.IntoFields(pop.id)}"></h:commandLink>                 
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <div id="messages_temp_bottom">
+            <h:outputText id="save_lbl" value="#{bizTypeLogic.holder.msg}"/>
+            <br/>
+        </div>
+    </ui:define>
+</ui:composition>

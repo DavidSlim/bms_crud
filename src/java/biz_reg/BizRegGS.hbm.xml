@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 14, 2016 9:43:21 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="biz_reg.BizRegGS" table="biz_reg" catalog="kra_bms">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="bizId" type="string">
+            <column name="biz_id" length="65535" />
+        </property>
+        <property name="idNo" type="string">
+            <column name="id_no" length="65535" />
+        </property>
+        <property name="pinPriv" type="string">
+            <column name="pin_priv" length="65535" />
+        </property>
+        <property name="nameLegal" type="string">
+            <column name="name_legal" length="65535" />
+        </property>
+        <property name="nameDir1" type="string">
+            <column name="name_dir1" length="65535" />
+        </property>
+        <property name="nameDir2" type="string">
+            <column name="name_dir2" length="65535" />
+        </property>
+        <property name="nameTrade" type="string">
+            <column name="name_trade" length="65535" />
+        </property>
+        <property name="pinBiz" type="string">
+            <column name="pin_biz" length="65535" />
+        </property>
+        <property name="bizType" type="string">
+            <column name="biz_type" length="65535" />
+        </property>
+        <property name="bizNature" type="string">
+            <column name="biz_nature" length="65535" />
+        </property>
+        <property name="dateStart" type="string">
+            <column name="date_start" length="65535" />
+        </property>
+        <property name="dateVisit" type="string">
+            <column name="date_visit" length="65535" />
+        </property>
+        <property name="blockNo" type="string">
+            <column name="block_no" length="65535" />
+        </property>
+        <property name="blockName" type="string">
+            <column name="block_name" length="65535" />
+        </property>
+        <property name="blockArea" type="string">
+            <column name="block_area" length="65535" />
+        </property>
+        <property name="bizFloorNo" type="string">
+            <column name="biz_floor_no" length="65535" />
+        </property>
+        <property name="bizOfficeNo" type="string">
+            <column name="biz_office_no" length="65535" />
+        </property>
+        <property name="bizNeighbour" type="string">
+            <column name="biz_neighbour" length="65535" />
+        </property>
+        <property name="bizPobox" type="string">
+            <column name="biz_pobox" length="65535" />
+        </property>
+        <property name="bizEmail" type="string">
+            <column name="biz_email" length="65535" />
+        </property>
+        <property name="bizTelNo" type="string">
+            <column name="biz_tel_no" length="65535" />
+        </property>
+        <property name="rentalLlordTenant" type="string">
+            <column name="rental_llord_tenant" length="65535" />
+        </property>
+        <property name="rentalLlordName" type="string">
+            <column name="rental_llord_name" length="65535" />
+        </property>
+        <property name="rentalLlordNo" type="string">
+            <column name="rental_llord_no" length="65535" />
+        </property>
+        <property name="rentalRentPaid" type="java.lang.Double">
+            <column name="rental_rent_paid" precision="22" scale="0" />
+        </property>
+        <property name="rentalUnitType" type="string">
+            <column name="rental_unit_type" length="65535" />
+        </property>
+        <property name="rentalUnitsNo" type="java.lang.Double">
+            <column name="rental_units_no" precision="22" scale="0" />
+        </property>
+        <property name="rentalUnitsRent" type="java.lang.Double">
+            <column name="rental_units_rent" precision="22" scale="0" />
+        </property>
+        <property name="empNo" type="java.lang.Double">
+            <column name="emp_no" precision="22" scale="0" />
+        </property>
+        <property name="empPaye" type="java.lang.Double">
+            <column name="emp_paye" precision="22" scale="0" />
+        </property>
+        <property name="toCurr" type="java.lang.Double">
+            <column name="to_curr" precision="22" scale="0" />
+        </property>
+        <property name="toPrev" type="java.lang.Double">
+            <column name="to_prev" precision="22" scale="0" />
+        </property>
+        <property name="itax" type="string">
+            <column name="itax" length="65535" />
+        </property>
+        <property name="postedBy" type="string">
+            <column name="posted_by" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+    <h:head>
+        <title>kra-bms</title>
+        <h:outputStylesheet name="view_style.css" library="css" />
+        <h:outputScript library="jss" name="jQuery v3.1.0.js"></h:outputScript>
+        <script type="text/javascript"></script>
+    </h:head>
+
+    <h:body style="margin: 0; padding: 0;">
+        <div id="page">
+            <div class="sticky_header" >
+                <div id="header" >
+                    <ui:insert name="header" >
+                        <ui:include src="/template/web_view/header.xhtml" />
+                        <h:form>
+                            <nav>
+                                <ul>
+                                    <li><a><h:link value="Starter"  outcome="#{nav_.bizRegStarter()}"/></a></li>
+                                    <li><a><h:link value="Businesses" outcome="#{nav_.bizRegPop()}"/></a></li>
+                                    <li><a><h:link value="Users Registration" outcome="#{nav_.usersReg()}" disabled="#{trueFalse.disabledListItem}"/></a></li>
+                                    <li><a><h:link value="Biz Registration" outcome="#{nav_.bizReg()}"/></a></li>
+                                    <li><a><h:link value="LogIn" outcome="#{nav_.login_form_redrkt()}"/></a></li>
+                                    <li><a><h:link value="LogOut" outcome="#{nav_.login_form_redrkt()}"/></a></li>
+                                </ul>
+                            </nav>
+                        </h:form>
+                    </ui:insert>
+                </div>
+                <div id="messages_temp_top">
+                    <ui:insert name="messages_top"/>
+                </div>
+            </div>
+
+            <div id="line-seperator"></div>
+
+            <div id="body">
+                <ui:insert name="center"/>
+            </div>
+
+            <div id="line-seperator"></div>
+
+            <div id="footer">
+                <ui:insert name="footer" >
+                    <div class="logout_msgs">
+                        <div id="messages_temp_bottom"><h:messages styleClass="error_warning"/></div>
+                        <div><h:form><h:commandLink id="buttons_div" value="Logout" action="#{userLoginBean.log_Out()}">
+                                </h:commandLink></h:form></div>
+                    </div>
+                    <div>
+                        <ui:include src="/template/web_view/footer.xhtml" />
+                    </div>
+                </ui:insert>
+            </div>
+
+        </div>
+
+    </h:body>
+
+</html>
